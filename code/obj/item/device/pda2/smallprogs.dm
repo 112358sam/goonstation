@@ -736,12 +736,15 @@ Code:
 		signal.data["group"] = list(mailgroup, MGA_CRISIS)
 		var/area/an_area = get_area(src.master)
 
+		var/turf/usr_turf = get_turf(usr)
 		if (isAIeye(usr))
-			var/turf/eye_loc = get_turf(usr)
-			if (!(eye_loc.cameras && length(eye_loc.cameras)))
-				an_area = get_area(eye_loc)
+			if (!(usr_turf.cameras && length(usr_turf.cameras)))
+				an_area = get_area(usr_turf)
 
-		signal.data["message"] = "<b><span class='alert'>***CRISIS ALERT*** Location: [an_area ? an_area.name : "nowhere"]!</span></b>"
+		var/x = usr_turf.x
+		var/y = usr_turf.y
+
+		signal.data["message"] = "<b><span class='alert'>***CRISIS ALERT*** Location: [an_area ? "X = "+num2text(x)+", Y = "+num2text(y)+" in "+an_area.name : "nowhere"]!</span></b>"
 
 		src.post_signal(signal)
 
