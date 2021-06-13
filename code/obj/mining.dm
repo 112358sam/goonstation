@@ -879,6 +879,7 @@
 				if (src.status & BROKEN)
 					user.show_text("The broken glass falls out.", "blue")
 					var/obj/computerframe/A = new /obj/computerframe(src.loc)
+					A.set_dir(src.dir)
 					if (src.material)
 						A.setMaterial(src.material)
 					var/obj/item/raw_material/shard/glass/G = unpool(/obj/item/raw_material/shard/glass)
@@ -894,6 +895,7 @@
 				else
 					user.show_text("You disconnect the monitor.", "blue")
 					var/obj/computerframe/A = new /obj/computerframe(src.loc)
+					A.set_dir(src.dir)
 					if (src.material)
 						A.setMaterial(src.material)
 					var/obj/item/circuitboard/mining_magnet/M = new /obj/item/circuitboard/mining_magnet(A)

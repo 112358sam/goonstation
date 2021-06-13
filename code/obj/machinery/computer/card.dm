@@ -357,6 +357,7 @@
 			if (src.status & BROKEN)
 				boutput(user, "<span class='notice'>The broken glass falls out.</span>")
 				var/obj/computerframe/A = new /obj/computerframe( src.loc )
+				A.set_dir(src.dir)
 				if(src.material) A.setMaterial(src.material)
 				var/obj/item/raw_material/shard/glass/G = unpool(/obj/item/raw_material/shard/glass)
 				G.set_loc(src.loc)
@@ -371,6 +372,7 @@
 			else
 				boutput(user, "<span class='notice'>You disconnect the monitor.</span>")
 				var/obj/computerframe/A = new /obj/computerframe( src.loc )
+				A.set_dir(src.dir)
 				if(src.material) A.setMaterial(src.material)
 				var/obj/item/circuitboard/card/M = new /obj/item/circuitboard/card( A )
 				for (var/obj/C in src)
@@ -407,7 +409,7 @@
 			src.updateUsrDialog()
 			return
 
-	src.attack_hand(user)
+		src.attack_hand(user)
 	return
 
 /obj/machinery/computer/card/proc/get_card_from(obj/item/I as obj)

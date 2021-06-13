@@ -54,6 +54,7 @@ Atmos alert computer
 				boutput(user, "<span class='notice'>The broken glass falls out.</span>")
 				var/obj/computerframe/A = new /obj/computerframe( src.loc )
 				if(src.material) A.setMaterial(src.material)
+				A.set_dir(src.dir)
 				var/obj/item/raw_material/shard/glass/G = unpool(/obj/item/raw_material/shard/glass)
 				G.set_loc(src.loc)
 				var/obj/item/circuitboard/atmospherealerts/M = new /obj/item/circuitboard/atmospherealerts( A )
@@ -67,6 +68,7 @@ Atmos alert computer
 			else
 				boutput(user, "<span class='notice'>You disconnect the monitor.</span>")
 				var/obj/computerframe/A = new /obj/computerframe( src.loc )
+				A.set_dir(src.dir)
 				if(src.material) A.setMaterial(src.material)
 				var/obj/item/circuitboard/atmospherealerts/M = new /obj/item/circuitboard/atmospherealerts( A )
 				for (var/obj/C in src)

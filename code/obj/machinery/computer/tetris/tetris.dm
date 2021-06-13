@@ -44,6 +44,7 @@
 			if (src.status & BROKEN)
 				boutput(user, "<span class='notice'>The broken glass falls out.</span>")
 				var/obj/computerframe/A = new /obj/computerframe( src.loc )
+				A.set_dir(src.dir)
 				if(src.material) A.setMaterial(src.material)
 				var/obj/item/raw_material/shard/glass/G = unpool(/obj/item/raw_material/shard/glass)
 				G.set_loc(src.loc)
@@ -58,6 +59,7 @@
 			else
 				boutput(user, "<span class='notice'>You disconnect the monitor.</span>")
 				var/obj/computerframe/A = new /obj/computerframe( src.loc )
+				A.set_dir(src.dir)
 				if(src.material) A.setMaterial(src.material)
 				var/obj/item/circuitboard/tetris/M = new /obj/item/circuitboard/tetris( A )
 				for (var/obj/C in src)

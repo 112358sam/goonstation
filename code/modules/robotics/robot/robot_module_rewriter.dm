@@ -15,6 +15,7 @@
 		playsound(src, "sound/items/Screwdriver.ogg", 50, 1)
 		if (do_after(user, 2 SECONDS))
 			var/obj/computerframe/computer = new /obj/computerframe(src.loc)
+			computer.set_dir(src.dir)
 			var/obj/item/circuitboard/robot_module_rewriter/circuitboard = new /obj/item/circuitboard/robot_module_rewriter(computer)
 			computer.circuit = circuitboard
 			computer.anchored = 1

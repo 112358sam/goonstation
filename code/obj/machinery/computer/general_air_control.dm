@@ -38,6 +38,7 @@ obj/machinery/computer/general_air_control
 				if (src.status & BROKEN)
 					boutput(user, "<span class='notice'>The broken glass falls out.</span>")
 					var/obj/computerframe/A = new /obj/computerframe( src.loc )
+					A.set_dir(src.dir)
 					if(src.material) A.setMaterial(src.material)
 					var/obj/item/raw_material/shard/glass/G = unpool(/obj/item/raw_material/shard/glass)
 					G.set_loc(src.loc)
@@ -53,6 +54,7 @@ obj/machinery/computer/general_air_control
 				else
 					boutput(user, "<span class='notice'>You disconnect the monitor.</span>")
 					var/obj/computerframe/A = new /obj/computerframe( src.loc )
+					A.set_dir(src.dir)
 					if(src.material) A.setMaterial(src.material)
 					var/obj/item/circuitboard/air_management/M = new /obj/item/circuitboard/air_management( A )
 					for (var/obj/C in src)
@@ -293,6 +295,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 					if (src.status & BROKEN)
 						boutput(user, "<span class='notice'>The broken glass falls out.</span>")
 						var/obj/computerframe/A = new /obj/computerframe( src.loc )
+						A.set_dir(src.dir)
 						if(src.material) A.setMaterial(src.material)
 						var/obj/item/raw_material/shard/glass/G = unpool(/obj/item/raw_material/shard/glass)
 						G.set_loc(src.loc)
@@ -308,6 +311,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 					else
 						boutput(user, "<span class='notice'>You disconnect the monitor.</span>")
 						var/obj/computerframe/A = new /obj/computerframe( src.loc )
+						A.set_dir(src.dir)
 						if(src.material) A.setMaterial(src.material)
 						var/obj/item/circuitboard/injector_control/M = new /obj/item/circuitboard/injector_control( A )
 						for (var/obj/C in src)
@@ -589,6 +593,7 @@ Rate: <A href='?src=\ref[src];change_vol=-10'>--</A> <A href='?src=\ref[src];cha
 				if (src.status & BROKEN)
 					boutput(user, "<span class='notice'>The broken glass falls out.</span>")
 					var/obj/computerframe/A = new /obj/computerframe( src.loc )
+					A.set_dir(src.dir)
 					if(src.material) A.setMaterial(src.material)
 					var/obj/item/raw_material/shard/glass/G = unpool(/obj/item/raw_material/shard/glass)
 					G.set_loc(src.loc)
@@ -604,6 +609,7 @@ Rate: <A href='?src=\ref[src];change_vol=-10'>--</A> <A href='?src=\ref[src];cha
 				else
 					boutput(user, "<span class='notice'>You disconnect the monitor.</span>")
 					var/obj/computerframe/A = new /obj/computerframe( src.loc )
+					A.set_dir(src.dir)
 					if(src.material) A.setMaterial(src.material)
 					var/obj/item/circuitboard/air_management/M = new /obj/item/circuitboard/air_management( A )
 					for (var/obj/C in src)

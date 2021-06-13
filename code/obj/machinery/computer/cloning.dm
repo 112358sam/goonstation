@@ -134,6 +134,7 @@
 				glass.inventory_counter.update_number(glass.amount)
 			logTheThing("station", user, null, "disconnects the cloning console at [log_loc(src)].")
 			var/obj/computerframe/A = new /obj/computerframe( src.loc )
+			A.set_dir(src.dir)
 			if(src.material) A.setMaterial(src.material)
 			var/obj/item/circuitboard/cloning/M = new /obj/item/circuitboard/cloning( A )
 			for (var/obj/C in src)
