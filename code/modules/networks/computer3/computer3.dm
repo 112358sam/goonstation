@@ -688,6 +688,7 @@ function lineEnter (ev)
 			if(!ispath(setup_frame_type, /obj/computer3frame))
 				src.setup_frame_type = /obj/computer3frame
 			var/obj/computer3frame/A = new setup_frame_type( src.loc )
+			A.set_dir(src.dir)
 			if(src.material) A.setMaterial(src.material)
 			A.created_icon_state = src.base_icon_state
 			if (src.status & BROKEN)
