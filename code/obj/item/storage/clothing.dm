@@ -67,14 +67,14 @@
 	name = "\improper Janitor's equipment"
 	spawn_contents = list(/obj/item/clothing/under/rank/janitor,\
 	/obj/item/clothing/shoes/brown,\
-	/obj/item/device/radio/headset/civilian,\
+	/obj/item/device/radio/headset/janitor,\
 	/obj/item/device/pda2/janitor)
 
 /obj/item/storage/box/clothing/botanist
 	name = "\improper Botanist's equipment"
 	spawn_contents = list(/obj/item/clothing/under/rank/hydroponics,\
 	/obj/item/clothing/shoes/brown,\
-	/obj/item/device/radio/headset/civilian,\
+	/obj/item/device/radio/headset/hydroponics,\
 	/obj/item/device/pda2/botanist,\
 	/obj/item/clothing/gloves/black)
 
@@ -82,7 +82,7 @@
 	name = "\improper Rancher's equipment"
 	spawn_contents = list(/obj/item/clothing/under/rank/rancher,\
 	/obj/item/clothing/shoes/brown,\
-	/obj/item/device/radio/headset/civilian,\
+	/obj/item/device/radio/headset/rancher,\
 	/obj/item/device/pda2/botanist,\
 	/obj/item/clothing/gloves/black)
 
@@ -92,7 +92,7 @@
 	/obj/item/clothing/shoes/chef,\
 	/obj/item/clothing/head/chefhat,\
 	/obj/item/clothing/suit/chef,\
-	/obj/item/device/radio/headset/civilian,\
+	/obj/item/device/radio/headset/chef,\
 	/obj/item/device/pda2/chef)
 
 /obj/item/storage/box/clothing/souschef
@@ -101,14 +101,14 @@
 	/obj/item/clothing/shoes/chef,\
 	/obj/item/clothing/head/souschefhat,\
 	/obj/item/clothing/suit/apron,\
-	/obj/item/device/radio/headset/civilian,\
+	/obj/item/device/radio/headset/chef,\
 	/obj/item/device/pda2/chef)
 
 /obj/item/storage/box/clothing/bartender
 	name = "\improper Bartender's equipment"
 	spawn_contents = list(/obj/item/clothing/under/rank/bartender,\
 	/obj/item/clothing/shoes/black,\
-	/obj/item/device/radio/headset/civilian,\
+	/obj/item/device/radio/headset/bartender,\
 	/obj/item/device/pda2/bartender)
 
 /obj/item/storage/box/clothing/waiter
@@ -168,7 +168,7 @@
 	spawn_contents = list(/obj/item/clothing/under/rank/roboticist,\
 	/obj/item/clothing/shoes/black,\
 	/obj/item/clothing/suit/labcoat/robotics,\
-	/obj/item/device/radio/headset/medical,\
+	/obj/item/device/radio/headset/robotics,\
 	/obj/item/device/pda2/medical/robotics,\
 	/obj/item/clothing/gloves/latex)
 
@@ -188,7 +188,7 @@
 	name = "\improper Mechanic's equipment"
 	spawn_contents = list(/obj/item/clothing/under/rank/mechanic,\
 	/obj/item/clothing/shoes/black,\
-	/obj/item/device/radio/headset/engineer,\
+	/obj/item/device/radio/headset/mechanic,\
 	/obj/item/device/pda2/mechanic,\
 	/obj/item/clothing/under/rank/orangeoveralls/yellow)
 
@@ -205,7 +205,7 @@
 	spawn_contents = list(/obj/item/clothing/under/rank/overalls,\
 	/obj/item/clothing/shoes/orange,\
 	/obj/item/clothing/gloves/black,\
-	/obj/item/device/radio/headset/engineer,\
+	/obj/item/device/radio/headset/mining,\
 	/obj/item/device/pda2/mining)
 
 /obj/item/storage/box/clothing/qm

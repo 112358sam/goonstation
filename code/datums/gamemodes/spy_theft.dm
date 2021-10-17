@@ -445,6 +445,14 @@
 	station_bounties[/obj/item/storage/backpack/satchel/captain] = 3
 
 	station_bounties[/obj/item/device/radio/headset/engineer] = 1
+	station_bounties[/obj/item/device/radio/headset/mechanic] = 1
+	station_bounties[/obj/item/device/radio/headset/janitor] = 1
+	station_bounties[/obj/item/device/radio/headset/mining] = 1
+	station_bounties[/obj/item/device/radio/headset/hydroponics] = 1
+	station_bounties[/obj/item/device/radio/headset/rancher] = 1
+	station_bounties[/obj/item/device/radio/headset/chef] = 1
+	station_bounties[/obj/item/device/radio/headset/bartender] = 1
+	station_bounties[/obj/item/device/radio/headset/robotics] = 1
 	station_bounties[/obj/item/device/radio/headset/medical] = 1
 	station_bounties[/obj/item/device/radio/headset/research] = 1
 	station_bounties[/obj/item/device/radio/headset/shipping] = 1

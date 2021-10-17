@@ -235,6 +235,16 @@
 		)
 	icon_override = "eng"
 
+/obj/item/device/radio/headset/mechanic
+	name = "Mechanic Headset"
+	desc = "A radio headset that is also capable of communicating over the Engineering radio channels."
+	icon_state = "engine headset"
+	secure_frequencies = list("e" = R_FREQ_ENGINEERING)
+	secure_classes = list(
+		"e" = RADIOCL_ENGINEERING,
+		)
+	icon_override = "mech"
+
 /obj/item/device/radio/headset/medical
 	name = "Medical Headset"
 	desc = "A radio headset that is also capable of communicating over the Medical radio channels."
@@ -244,6 +254,16 @@
 		"m" = RADIOCL_MEDICAL,
 		)
 	icon_override = "med"
+
+/obj/item/device/radio/headset/robotics
+	name = "Robotics Headset"
+	desc = "A radio headset that is also capable of communicating over the Medical radio channels."
+	icon_state = "med headset"
+	secure_frequencies = list("m" = R_FREQ_MEDICAL)
+	secure_classes = list(
+		"m" = RADIOCL_MEDICAL,
+		)
+	icon_override = "rob"
 
 /obj/item/device/radio/headset/research
 	name = "Research Headset"
@@ -264,6 +284,54 @@
 		"c" = RADIOCL_CIVILIAN,
 		)
 
+/obj/item/device/radio/headset/janitor
+	name = "Janitor Headset"
+	desc = "A radio headset that is also capable of communicating over the Civilian radio channels."
+	icon_state = "janitor headset"
+	secure_frequencies = list("c" = R_FREQ_CIVILIAN)
+	secure_classes = list(
+		"c" = RADIOCL_CIVILIAN,
+		)
+	icon_override = "jan"
+
+/obj/item/device/radio/headset/hydroponics
+	name = "Hyroponics Headset"
+	desc = "A radio headset that is also capable of communicating over the Civilian radio channels."
+	icon_state = "hydro headset"
+	secure_frequencies = list("c" = R_FREQ_CIVILIAN)
+	secure_classes = list(
+		"c" = RADIOCL_CIVILIAN,
+		)
+	icon_override = "hydro"
+
+/obj/item/device/radio/headset/rancher
+	name = "Rancher Headset"
+	desc = "A radio headset that is also capable of communicating over the Civilian radio channels."
+	icon_state = "ranch headset"
+	secure_frequencies = list("c" = R_FREQ_CIVILIAN)
+	secure_classes = list(
+		"c" = RADIOCL_CIVILIAN,
+		)
+	icon_override = "ranch"
+
+/obj/item/device/radio/headset/chef
+	name = "Chef Headset"
+	desc = "A radio headset that is also capable of communicating over the Civilian radio channels."
+	icon_state = "bar headset"
+	secure_frequencies = list("c" = R_FREQ_CIVILIAN)
+	secure_classes = list(
+		"c" = RADIOCL_CIVILIAN,
+		)
+	icon_override = "chef"
+/obj/item/device/radio/headset/bartender
+	name = "Bartender Headset"
+	desc = "A radio headset that is also capable of communicating over the Civilian radio channels."
+	icon_state = "bar headset"
+	secure_frequencies = list("c" = R_FREQ_CIVILIAN)
+	secure_classes = list(
+		"c" = RADIOCL_CIVILIAN,
+		)
+	icon_override = "bar"
 /obj/item/device/radio/headset/shipping
 	name = "Shipping Headset"
 	desc = "A radio headset that is also capable of communicating over the Engineering and Civilian channels."
@@ -276,6 +344,19 @@
 		"c" = RADIOCL_CIVILIAN,
 		)
 	icon_override = "qm"
+
+/obj/item/device/radio/headset/mining
+	name = "Mining Headset"
+	desc = "A radio headset that is also capable of communicating over the Engineering and Civilian channels."
+	icon_state = "mining headset"
+	secure_frequencies = list(
+	"e" = R_FREQ_ENGINEERING,
+	"c" = R_FREQ_CIVILIAN)
+	secure_classes = list(
+		"e" = RADIOCL_ENGINEERING,
+		"c" = RADIOCL_CIVILIAN,
+		)
+	icon_override = "min"
 
 /obj/item/device/radio/headset/mail
 	name = "Mailman's Headset"
