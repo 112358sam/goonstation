@@ -86,7 +86,7 @@ ABSTRACT_TYPE(/obj/item/circuitboard)
 	name = "Circuit board (Robotics Control)"
 	computertype = "/obj/machinery/computer/robotics"
 /obj/item/circuitboard/robot_module_rewriter
-	name = "circuit board (Cyborg Module Rewriter)"
+	name = "Circuit board (Cyborg Module Rewriter)"
 	computertype = "/obj/machinery/computer/robot_module_rewriter"
 /obj/item/circuitboard/cloning
 	name = "Circuit board (Cloning)"
