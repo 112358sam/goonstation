@@ -10,6 +10,8 @@
 	var/datum/light/light
 	var/ARCHIVED(temperature)
 	var/obj/overlay/O1 = null
+	var/obj/overlay/defib_overlay = null
+	var/obj/overlay/reagent_overlay = null
 	var/mob/occupant = null
 	var/obj/item/beaker = null
 	var/show_beaker_contents = 0
@@ -200,7 +202,19 @@
 			if (href_list["reagent_scan_active"])
 				reagent_scan_active = !reagent_scan_active
 			if (href_list["defib"])
-				src.defib.attack(src.occupant, usr)
+				//src.defib.attack(src.occupant, usr)
+				if (!isliving(src.occupant) || issilicon(src.occupant))
+					return ..()
+				if (src.defib.defibrillate(src.occupant, usr, src.defib.emagged, src.defib.makeshift, src.defib.cell))
+					JOB_XP(usr, "Medical Doctor", 5)
+					src.defib.charged = 0
+					set_icon_state("defib-shock")
+					SPAWN_DBG(1 SECOND)
+						set_icon_state("defib-off")
+					SPAWN_DBG(src.defib.charge_time)
+						src.defib.charged = 1
+						set_icon_state("[src.defib.icon_base]-on")
+						playsound(src.loc, "sound/items/defib_charge.ogg", 90, 0)
 			if (href_list["eject_occupant"])
 				go_out()
 
@@ -296,7 +310,7 @@
 
 
 	proc/add_overlays()
-		src.overlays = list(O1)
+		src.overlays = list(O1,defib_overlay,reagent_overlay)
 
 	proc/build_icon()
 		if(on)
@@ -309,11 +323,20 @@
 			light.disable()
 			icon_state = "celltop-p"
 		O1 = new /obj/overlay(  )
+		reagent_overlay = new /obj/overlay( )
+		defib_overlay = new /obj/overlay( )
 		O1.icon = 'icons/obj/Cryogenic2.dmi'
+		reagent_overlay.icon = 'icons/obj/Cryogenic2.dmi'
+		defib_overlay.icon = 'icons/obj/Cryogenic2.dmi'
 		if(src.node)
 			O1.icon_state = "cryo_bottom_[src.on]"
 		else
 			O1.icon_state = "cryo_bottom"
+		if(defib)
+			defib_overlay.icon_state = "defib"
+		else
+			defib_overlay.icon_state = null
+		defib_overlay.pixel_y = -32
 		O1.pixel_y = -32.0
 		src.pixel_y = 32
 		add_overlays()
