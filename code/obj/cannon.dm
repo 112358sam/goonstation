@@ -143,12 +143,78 @@
 	event_handler_flags = USE_FLUID_ENTER
 	layer = OBJ_LAYER-0.1
 	stops_space_move = TRUE
+	welded = 0
+	lit = 0
 
+	//make cannon+ball at nano-fab
+	//ability to withstand different powers dependent on material properties
+	//cannonball damage based on material properties
+	//erebite cannons explode, erebite cannonballs explode on impact (or in barrel if it is too weak)
+	//power based on reagents in barrel
+	//use paper for confetti instead
+	//people can climb in
+	//people wearing a helmet and clown mask take no damage themselves (define helmet as headgear with 2+ defense) (maybe just a chance)
+	//plasmastone cannonballs explode into plasma gas on impact
+	//shrapnel option? (crystal ball?)
+	//viscerite ball explodes into gibs on impact (harmless)
+	//if fail explodes just like the reagents would have (maybe just use that explosion, point is to make it not any stronger than just a beaker bomb)
+	//reagent cap 100 or less (see above)
+	//sorium work as well?
+
+	//light calls fire if not extinguished
+	//no action bar on light, instead show fuse shrinking on sprite
+	//check explosion power of reagents, compare against resistance of cannon, then fire or just explode
+	//put human inside projectile for powerful explosions, maybe just throw_at() for weak explosions
+	//projectile breaks walls if strong enough
 
 	attackby(obj/item/W as obj, mob/user as mob, params)
+		//weld then wrench to deconstruct (wrench then weld to construct) (timer)
+		//weld to secure (so it doesn't destory itself) (timer)
+		//wrench to deconstruct unwelded (timer)
+		//crowbar to rotate (timer)
+		//canonball
+		//reagents?
+		//shrapnell?Paper?
+		//light fuse
+		if some condition //ready to be fired condition
+			if (src.lit == 0)
+				if (isweldingtool(W) && W:try_weld(user,0,-1,0,0))
+					src.light(user, "<span class='alert'><b>[user]</b> lights [src] fuse with [W].</span>")
+					return
+				else if (istype(W, /obj/item/sword) && W:active)
+					src.light(user, "<span class='alert'><b>[user]</b> expertly swishes [W] and lights [src] fuse ablaze.</span>")
+					return
+				else if (istype(W, /obj/item/clothing/head/cakehat) && W:on)
+					src.light(user, "<span class='alert'><b>[user]</b> lights [src] fuse with [W].</span>")
+					return
+				else if (istype(W, /obj/item/device/igniter))
+					src.light(user, "<span class='alert'><b>[user]</b> lights [src] fuse with [W].</span>")
+					return
+				else if (istype(W, /obj/item/device/light/zippo) && W:on)
+					src.light(user, "<span class='alert'><b>[user]</b> lights [src] fuse with [W].</span>")
+					return
+				else if ((istype(W, /obj/item/match) || istype(W, /obj/item/clothing/mask/cigarette) || istype(W, /obj/item/device/light/candle)) && W:on)
+					src.light(user, "<span class='alert'><b>[user]</b> lights [src] fuse with [W].</span>")
+					return
+				else if (W.burning)
+					src.light(user, "<span class='alert'><b>[user]</b> lights [src] fuse with [W].</span>")
+					return
+				else if (W.firesource)
+					src.light(user, "<span class='alert'><b>[user]</b> lights [src] with [W].</span>")
+					W.firesource_interact()
+					return
+				else
+					return ..()
+		else
+			return ..()
 
+	proc/light(var/mob/user as mob, var/message as text)
+		//add logging
+
+	proc/fire()
 
 	attack_hand(mob/user)
+		//use this to put out a fuse
 
 	Cross(atom/movable/mover)
 
