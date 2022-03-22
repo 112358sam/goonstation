@@ -143,8 +143,10 @@
 	event_handler_flags = USE_FLUID_ENTER
 	layer = OBJ_LAYER-0.1
 	stops_space_move = TRUE
-	welded = 0
-	lit = 0
+	var/welded = FALSE
+	var/lit = FALSE
+	var/obj/item/fuse/fuse = null
+	var/obj/item/cannonball/ball = null
 
 	//make cannon+ball at nano-fab
 	//ability to withstand different powers dependent on material properties
@@ -167,16 +169,13 @@
 	//put human inside projectile for powerful explosions, maybe just throw_at() for weak explosions
 	//projectile breaks walls if strong enough
 
+	New()
+		..()
+		src.create_reagents(100)
+
 	attackby(obj/item/W as obj, mob/user as mob, params)
-		//weld then wrench to deconstruct (wrench then weld to construct) (timer)
-		//weld to secure (so it doesn't destory itself) (timer)
-		//wrench to deconstruct unwelded (timer)
-		//crowbar to rotate (timer)
-		//canonball
-		//reagents?
-		//shrapnell?Paper?
 		//light fuse
-		if some condition //ready to be fired condition
+		if (src.fuse) //ready to be fired condition
 			if (src.lit == 0)
 				if (isweldingtool(W) && W:try_weld(user,0,-1,0,0))
 					src.light(user, "<span class='alert'><b>[user]</b> lights [src] fuse with [W].</span>")
@@ -205,6 +204,44 @@
 					return
 				else
 					return ..()
+
+		//weld to secure
+		if (isweldingtool(W))
+			if(!W:try_weld(user, 1, noisy = 2))
+				return
+			var/positions = src.get_welding_positions()
+			actions.start(new /datum/action/bar/private/welding(user, src, 5 SECONDS, /obj/cannon/proc/weld_action, \
+				list(user), "[user] finishes using their [W.name] on the cannon.", positions[1], positions[2]),user)
+		//wrench to deconstruct
+		else if (iswrenchingtool(W))
+
+		//crowbar to rotate (timer)
+		else if (ispryingtool(W))
+
+		//canonball
+		else if (istype(W,/obj/item/cannonball))
+
+		//reagents?
+		else if (istype(W,/obj/item/reagent_containers/glass))
+			//explosive reagents
+			//paper for confetti?
+			//synthflesh for gibs?
+			var/obj/item/reagent_containers/glass/G = W
+			if (!G.reagents.total_volume)
+				boutput(user, "<span class='alert'>There is nothing in [G] to pour!</span>")
+				return
+			else
+				user.visible_message("<span class='notice'>[user] pours [G.amount_per_transfer_from_this] units of [G]'s contents into [src].</span>")
+				playsound(src.loc, "sound/impact_sounds/Liquid_Slosh_1.ogg", 25, 1)
+				W.reagents.trans_to(src, G.amount_per_transfer_from_this)
+				if (!G.reagents.total_volume)
+					boutput(user, "<span class='alert'><b>[G] is now empty.</b></span>")
+
+		//insert fuse
+		else if (istype(W, /obj/item/fuse))
+			src.fuse = W
+			boutput(user, "You thread the fuse through the hole. The cannon is now ready to fire!")
+
 		else
 			return ..()
 
@@ -212,6 +249,28 @@
 		//add logging
 
 	proc/fire()
+
+	/obj/cannon/proc/weld_action(mob/user)
+		if(welded == FALSE)
+			welded = TRUE
+			boutput(user, "You weld the seams on the cannon.")
+			desc = "Insert welded description"
+		else
+			welded = FALSE
+			boutput(user, "You cut open the seams on the cannon.")
+			desc = "Insert unwelded (default) description."
+
+	/obj/cannon/proc/get_welding_positions()
+		var/start
+		var/stop
+
+		start = list(-6,-15)
+		stop = list(6,-15)
+
+		if(welded == TRUE)
+			. = list(stop,start)
+		else
+			. = list(start,stop)
 
 	attack_hand(mob/user)
 		//use this to put out a fuse
