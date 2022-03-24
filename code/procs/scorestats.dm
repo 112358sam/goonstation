@@ -288,7 +288,9 @@ var/datum/score_tracker/score_tracker
 				. += SC.amount
 			if (istype(I, /obj/item/card/id))
 				var/obj/item/card/id/ID = I
-				. += ID.amount
+				var/account = FindBankAccountByName(ID.registered)
+				if (account)
+					. += account["current_money"]
 
 	proc/heisenhat_stats()
 		. = list()
